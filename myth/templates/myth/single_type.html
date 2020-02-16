@@ -1,0 +1,15 @@
+{% extends 'myth/base.html' %} {% block content %}
+<h2>{{ single.title }}</h2>
+<h2>{{ single.genre }}</h2>
+<h3>{{ single.info }}</h3>
+<!-- <img src="{{ single.img }}"> -->
+
+{% for myth_type in single.myth_types.all %}
+<a href="{% url 'single_being' pk=myth_type.id %}">
+<h1>{{ myth_type.title }}</h1>
+<img src=" {{ myth_type.image }}">
+<h2>{{ myth_type.genre }}</h2>
+</a>
+{% endfor %}
+
+{% endblock %}

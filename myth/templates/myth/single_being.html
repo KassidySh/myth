@@ -1,0 +1,11 @@
+{% extends 'myth/base.html' %} {% block content %}
+<h1>{{ god.genre }}</h1>
+<h2>{{ god.myth_type }}</h2>
+<h3>{{ god.title }}</h3>
+<p>{{ god.origin }}</p>
+<img src="{{ god.image }}">
+
+<!-- loop for relationships -->
+
+<!-- I need to have the stories loop through -->
+{% endblock %}

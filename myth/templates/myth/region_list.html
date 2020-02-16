@@ -1,0 +1,5 @@
+{% extends 'myth/base.html' %} {% block content %}
+{% for region in regions %}
+<a href="{% url 'single_region' pk=region.id %}"><h1>{{ region.genre }}</h1></a>
+{% endfor %}
+{% endblock %}

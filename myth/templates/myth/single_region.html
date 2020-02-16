@@ -1,0 +1,18 @@
+{% extends 'myth/base.html' %} {% block content %}
+<h1>{{ region.genre }}</h1>
+<h2>{{ region.location }}</h2>
+<p>{{ region.intro }}</p>
+
+{% for type in region.types.all %}
+<h3>{{ type.title }}</h3>
+{% endfor %}
+
+{% for being in region.beings.all %}
+<a href="{% url 'single_being' pk=being.id %}">
+<h1>{{ being.title }}</h1>
+<img src=" {{ being.image }}">
+<h2>{{ being.myth_type }}</h2>
+</a>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'myth/base.html' %} {% block content %}
+{% for type in types %}
+<a href="{% url 'single_type' pk=type.id %}">
+<h4>{{ type.genre.genre }} - {{ type.title }}</h4>
+</a>
+{% endfor %}
+{% endblock %}
