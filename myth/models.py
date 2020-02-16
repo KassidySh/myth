@@ -30,3 +30,11 @@ class Being(models.Model):
     def __str__(self):
         return self.title
     
+class Relation(models.Model):
+    god1 = models.ForeignKey(Being, on_delete=models.CASCADE, related_name='god1')
+    god2 = models.ForeignKey(Being, on_delete=models.CASCADE, related_name='god2')
+    detail = models.CharField(max_length=100)
+    detail2= models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.god1.title
