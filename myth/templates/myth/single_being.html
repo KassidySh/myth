@@ -7,12 +7,16 @@
 
 <!-- loop for relationships for first god key -->
 {% for relation in god.god1.all%}
-<h3>{{relation.god1}} - {{relation.detail}} of <a href="{% url 'single_being' pk=relation.id %}">{{relation.god2}}</a></h3>
+<h3>{{relation.god1}} - {{relation.detail}} of <a href="{% url 'single_being' pk=relation.god2.id %}">{{relation.god2}}</a></h3>
 {% endfor %}
 
 <!-- if forign key is 2nd god -->
 {% for relation2 in god.god2.all%}
 <h3>{{relation2.god2}} - {{relation2.detail2}} of <a href="{% url 'single_being' pk=relation2.god1.id %}">{{relation2.god1}}</a> </h3>
+{% endfor %}
+<!-- for loop for what they're the god of -->
+{% for list in god.god.all%}
+<h5>{{list.item}}</h5>
 {% endfor %}
 <!-- I need to have the stories loop through -->
 {% endblock %}

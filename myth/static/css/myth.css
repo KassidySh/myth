@@ -2,3 +2,11 @@
 height: 50px;
 width: 50px;
 }
+
+h1,h2{
+font-family: 'Abril Fatface', cursive;
+}
+
+body{
+font-family: 'Vollkorn', serif;
+}

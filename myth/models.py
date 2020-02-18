@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Region(models.Model):
@@ -24,7 +25,7 @@ class Being(models.Model):
     title = models.CharField(max_length=500)
     image = models.TextField()
     origin=models.TextField()
-    associated_city = models.TextField()
+    associated_city = models.TextField(blank=True)
     
     
     def __str__(self):
@@ -38,3 +39,14 @@ class Relation(models.Model):
     
     def __str__(self):
         return self.god1.title
+    
+class God_Of(models.Model):
+    god = models.ForeignKey(Being, on_delete=models.CASCADE, related_name='god')
+    item = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.item
+    
+class Author(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
+    image = models.TextField()
