@@ -18,5 +18,6 @@
 {% for list in god.god.all%}
 <h5>{{list.item}}</h5>
 {% endfor %}
+<a href="{ url 'new_story' pk=god.id }">ADD A STORY</a>
 <!-- I need to have the stories loop through -->
 {% endblock %}

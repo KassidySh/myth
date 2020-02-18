@@ -10,3 +10,7 @@ font-family: 'Abril Fatface', cursive;
 body{
 font-family: 'Vollkorn', serif;
 }
+
+a{
+text-decoration: none;
+}

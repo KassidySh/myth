@@ -50,3 +50,14 @@ class God_Of(models.Model):
 class Author(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     image = models.TextField()
+    
+    def __str__(self):
+        return self.author
+    
+class Story(models.Model):
+    author=models.ForeignKey(Author, on_delete=models.CASCADE, related_name='writer')
+    title=models.CharField(max_length=500)
+    content=models.TextField()
+    
+    def __str__(self):
+        return self.title
