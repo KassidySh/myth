@@ -55,9 +55,24 @@ class Author(models.Model):
         return self.author
     
 class Story(models.Model):
-    author=models.ForeignKey(Author, on_delete=models.CASCADE, related_name='writer')
+    author=models.ForeignKey(User, on_delete=models.CASCADE, related_name='writer')
+    god= models.ForeignKey(Being, on_delete=models.CASCADE, related_name='person', default=1)
     title=models.CharField(max_length=500)
     content=models.TextField()
     
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    author=models.ForeignKey(User, on_delete=models.CASCADE, related_name='wrtten_by')
+    story= models.ForeignKey(Story, on_delete=models.CASCADE, related_name='related_story')
+    comment=models.TextField()
+
+
+class FaveGod(models.Model):
+    user=models.ForeignKey(Author, on_delete=models.CASCADE, related_name='person', blank=True)
+    god= models.ForeignKey(Being, on_delete=models.CASCADE, related_name='being', blank=True)
+    
+class FaveStory(models.Model):
+    user=models.ForeignKey(Author, on_delete=models.CASCADE, related_name='loggedon', blank=True)
+    story= models.ForeignKey(Story, on_delete=models.CASCADE, related_name='story', blank=True)

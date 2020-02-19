@@ -1,4 +1,4 @@
-## MYTHS OF THE WORLD
+# MYTHS OF THE WORLD
 
 This is an application to view different gods from different religions and search them. You can add different stories for the gods, and comment on the story.
 
@@ -43,11 +43,11 @@ Comment:
 
 
 
-# BRONZE:
+## BRONZE:
 - See various gods
 - Add/update/delete stories for gods
 - Search with Haystack django
-# SILVER:
+## SILVER:
 - Add/update/delete comments for stories
-# GOLD:
+## GOLD:
 - Basic chatroom where people can share ideas

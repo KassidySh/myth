@@ -4,6 +4,7 @@
 <h3>{{ god.title }}</h3>
 <p>{{ god.origin }}</p>
 <img src="{{ god.image }}">
+<h4>{{god.id}}</h4>
 
 <!-- loop for relationships for first god key -->
 {% for relation in god.god1.all%}
@@ -18,6 +19,28 @@
 {% for list in god.god.all%}
 <h5>{{list.item}}</h5>
 {% endfor %}
-<a href="{ url 'new_story' pk=god.id }">ADD A STORY</a>
+
+<a href="{% url 'new_story' pk=god.id %}">ADD A STORY</a>
+{% for story in god.person.all%}
+<h2>{{story.title}}</h2>
+<p>{{story.content}}</p>
+<a href="{% url 'new_comment' pk=story.id god_pk=god.id %}">Comment</a>
+{% for comment in story.related_story.all%}
+<h3>{{ comment.comment }}</h3>
+<h5>{{ comment.author }}</h5>
+<!-- If the comment was written by the author -->
+{% if user.id is comment.author.id %}
+<a href="{% url 'delete_comment' pk=comment.id god_pk=god.id %}">delete </a>
+<a href="{% url 'edit_comment' pk=comment.id god_pk=god.id %}">edit</a>
+{% endif %}
+
+{% endfor %}
+<!-- If the story was made by the user -->
+{% if user.id is story.author.id %}
+
+<a href="{% url 'delete_story' pk=story.id god_pk=god.id %}">delete</a>
+<a href="{% url 'edit_story' pk=story.id %}">edit</a>
+{% endif %}
+{% endfor %}
 <!-- I need to have the stories loop through -->
 {% endblock %}
