@@ -16,4 +16,6 @@ urlpatterns = [
     path('comment/<int:pk>/<int:god_pk>/edit/', views.edit_comment, name='edit_comment'),
     path('comment/<int:pk>/<int:god_pk>/delete', views.delete_comment, name='delete_comment'),
     #Favorite Stories and Favorite Gods
+    # Search
+    path('search/',  views.search_results, name='search_results')
 ]

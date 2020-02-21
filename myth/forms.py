@@ -4,7 +4,7 @@ from .models import Story, Comment
 class StoryForm(forms.ModelForm):
     class Meta:
         model = Story
-        fields = ('author','god','content')
+        fields = ('author','title','god','content')
         
 class CommentForm(forms.ModelForm):
     class Meta:

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Region, Type, Being, Story, FaveGod, FaveStory, Comment
+from .models import Region, Type, Being, Story, FaveGod, FaveStory, Comment, God_Of
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .forms import StoryForm, CommentForm
+from itertools import chain
 # Create your views here.
 
 def region_list(request):
@@ -77,3 +79,15 @@ def edit_comment(request, pk, god_pk):
 def delete_comment(request, pk, god_pk):
     Comment.objects.get(id=pk).delete()
     return redirect('single_being', pk=god_pk)
+    
+def search_results(request):
+    query = request.GET.get('q')
+    if query:
+        god = Being.objects.filter(title__icontains=query)
+        key = God_Of.objects.filter(Q(item__icontains=query))
+        results = chain(god, key)
+    else:
+        results = Being.objects.all()
+    return render(request, 'myth/search_results.html', {'results': results})
+
+

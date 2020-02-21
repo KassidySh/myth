@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myth</title>
 <link rel="stylesheet" href="{% static 'css/myth.css' %}" >
+<script src="https://kit.fontawesome.com/31df545856.js" crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Vollkorn&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,6 +16,15 @@
 <a href="{% url 'region_list' %}"><img class='homebutton' src="https://images.unsplash.com/photo-1573230905155-3e7b457c5e44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"></a>
 <a href="{% url 'type_list' %}">type</a>
  searchbar 
+<form method="GET" action="{% url 'search_results' %}">
+<input name="q" value="{{ request.GET.q }}">
+<button type="submit">Search</button>
+
+</form>
+
+
+
+
   <div class="user-info">
     {% if user.is_authenticated %} Welcome, {{ user.username }}
     <a href="{% url 'logout' %}">Log out</a>

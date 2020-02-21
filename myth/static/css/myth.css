@@ -15,3 +15,7 @@ a{
 text-decoration: none;
 }
 
+.delete i{
+content: '\f2ed';
+font-family: fontAwesome;
+}
