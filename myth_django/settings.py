@@ -83,10 +83,11 @@ WSGI_APPLICATION = 'myth_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myth',
-        'USER': 'zeus',
-        'PASSWORD': 'zeus',
-        'HOST': 'localhost'
+        
+        'NAME': 'd8tp7esg7n1m5d',
+        'USER': 'cgtbfjqwdpuyil',
+        'PASSWORD': '087f3b713ab010c86a8d82544a35928ac2be50a02bdc567f5543e4e1ef2643a8',
+        'HOST': 'c2-34-192-30-15.compute-1.amazonaws.com'
     }
 }
 
