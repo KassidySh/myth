@@ -1,36 +1,37 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myth</title>
-<link rel="stylesheet" href="{% static 'css/myth.css' %}" >
+
 <script src="https://kit.fontawesome.com/31df545856.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Vollkorn&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/custom.css' %}" >
 </head>
 <body>
-    <nav>
-<a href="{% url 'region_list' %}"><img class='homebutton' src="https://images.unsplash.com/photo-1573230905155-3e7b457c5e44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"></a>
-<a href="{% url 'type_list' %}">type</a>
- searchbar 
-<form method="GET" action="{% url 'search_results' %}">
-<input name="q" value="{{ request.GET.q }}">
-<button type="submit">Search</button>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light nav-justified">
+<a class="nav-link" href="{% url 'region_list' %}"><img class='homebutton' src="https://image.flaticon.com/icons/svg/2532/2532030.svg"></a>
+<form class="form-inline nav-item" method="GET" aria-label="Search" action="{% url 'search_results' %}">
+<input class="form-control mr-sm-2 nav-item" type="search" name="q" value="{{ request.GET.q }}">
+<button class="btn btn-outline-success my-2 my-sm-0 nav-item" type="submit">Search</button>
 
 </form>
 
 
 
-
-  <div class="user-info">
-    {% if user.is_authenticated %} Welcome, {{ user.username }}
-    <a href="{% url 'logout' %}">Log out</a>
+ {% if user.is_authenticated %} 
+<a href="{% url 'user' %}">
+<img class="homebutton user"  src="https://images.unsplash.com/photo-1516537219851-920e2670c6e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
+</a>
     {% else %}
-    <a href="{% url 'login' %}">Login</a>
-<a href="{% url 'signup' %}">Signup</a>
+    <a class="text-dark login" href="{% url 'login' %}">Login</a>
+<a class="text-dark login" href="{% url 'signup' %}">Signup</a>
     {% endif %}
   </div>
 </nav>

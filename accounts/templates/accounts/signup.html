@@ -1,10 +1,14 @@
-{% extends "myth/base.html" %} {% block content %}
-
+{% extends "myth/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class='row'>
+<div class="col-sm-8">
 <form method="post" action="{% url 'signup' %}">
-  {% csrf_token %} {{form.as_p}}
+  {% csrf_token %} {{form|crispy}}
 
   <input type="submit" value="Sign Up" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
+</div>
+</div>
 {% endblock %}

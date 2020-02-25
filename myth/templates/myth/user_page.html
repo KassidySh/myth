@@ -1,0 +1,14 @@
+{% extends 'myth/base.html' %} {% block content %}
+<main>
+<nav class="nav nav-pills nav-justified">
+<a class="text-dark nav-item nav-link">Welcome, {{ user.username }}</a>
+<a class="text-dark nav-item nav-link" href="{% url 'user_stories' %}">My Stories</a>
+<a class="text-dark nav-item nav-link" href="{% url 'user_stories' %}">Favorite Gods</a>
+<a class="text-dark nav-item nav-link" href="{% url 'user_stories' %}">Favorite Stories</a>
+<a class="text-dark nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+</nav>
+<h3>userpage</h3>
+</main>
+{% block info %} {% endblock %}
+
+{% endblock %} 

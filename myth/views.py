@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Region, Type, Being, Story, FaveGod, FaveStory, Comment, God_Of
+from .models import Region, Type, Being, Story, FaveGod, FaveStory, Comment, God_Of, Author, User
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .forms import StoryForm, CommentForm
+from .forms import StoryForm, CommentForm, FaveGodForm, FaveStoryForm
 from itertools import chain
 # Create your views here.
 
@@ -53,7 +53,6 @@ def delete_story(request, pk, god_pk):
     Story.objects.get(id=pk).delete()
     return redirect('single_being', pk=god_pk)
 
-# def new_fave_story(request, pk):
 @login_required
 def new_comment(request, pk, god_pk):
     if request.method == 'POST':
@@ -90,4 +89,32 @@ def search_results(request):
         results = Being.objects.all()
     return render(request, 'myth/search_results.html', {'results': results})
 
+@login_required
+def user(request):
+    author = Author.objects.all()
+    return render(request, 'myth/user_page.html', {'author': author})
 
+@login_required
+def user_stories(request):
+    stories = User.objects.all()
+    return render(request, 'myth/user_stories.html', {'stories': stories})
+
+# def fave_story(request, pk):
+
+@login_required
+def favorite_god(request, pk):
+    if request.method == 'POST':
+        form = FaveGodForm(request.Post)
+        user = request.user
+        god = pk
+        FaveGod = form.save()
+        return redirect('single_being', pk=pk)
+    
+@login_required
+def favorite_story(request, pk, god_pk):
+    if request.method == 'POST':
+        form = FaveStoryForm(request.Post)
+        user = request.user
+        story = pk
+        FaveStory = form.save()
+        return redirect('single_being', pk=god_pk)

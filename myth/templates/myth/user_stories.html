@@ -1,0 +1,35 @@
+{% extends 'myth/user_page.html' %}  {% block info %}
+<h1>My stories</h1>
+
+{% for story in user.writer.all%}
+<div class="card" style="width: 80%;">
+<div class="card-body">
+<h2 class="card-title">{{story.title}}</h2>
+<p class="card-text">{{story.content}}</p>
+{% for comment in story.related_story.all%}
+<div class="card">
+{% if user.id is comment.author.id %}
+<div class="card-header">
+<a class="text-danger" class='delete' href="{% url 'delete_comment' pk=comment.id god_pk=story.god.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+<a href="{% url 'edit_comment' pk=comment.id god_pk=story.god.id %}"><i class="fas fa-edit"></i></a>
+</div>
+{% endif %}
+
+<div class="card-body">
+<blockquote class="blockquote mb-0">
+
+<h3>{{ comment.comment }}</h3>
+<h5 class="blockquote-footer">{{ comment.author }}</h5>
+</blockquote>
+<!-- If the comment was written by the author -->
+
+</div>
+</div>
+{% endfor %}
+<!-- If the story was made by the user -->
+
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %} 

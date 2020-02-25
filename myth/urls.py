@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -16,6 +16,12 @@ urlpatterns = [
     path('comment/<int:pk>/<int:god_pk>/edit/', views.edit_comment, name='edit_comment'),
     path('comment/<int:pk>/<int:god_pk>/delete', views.delete_comment, name='delete_comment'),
     #Favorite Stories and Favorite Gods
+    path('story/<int:pk>/<int:god_pk>/favorite/', views.favorite_story, name='favorite_story'),
+    path('god/<int:pk>/', views.favorite_god, name='favorite_god'),
     # Search
-    path('search/',  views.search_results, name='search_results')
+    path('search/',  views.search_results, name='search_results'),
+    path('user/', views.user, name='user'),
+    #user pages
+    path('user/stories/', views.user_stories, name='user_stories'),
+
 ]

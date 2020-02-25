@@ -1,0 +1,103 @@
+h1,h2{
+font-family: 'Abril Fatface', cursive;
+}
+
+body{
+font-family: 'Vollkorn', serif;
+}
+
+a:hover{
+text-decoration: none;
+}
+
+footer{
+height: 40px;
+background-color: #F8F9FA;
+display: flex;
+justify-content: center;
+position: relative;
+bottom: 0;
+width: 100%;
+}
+
+h6{
+font-size: 20px;
+margin: 10px 0;
+}
+
+main{
+margin: 10px;
+}
+
+.god{
+display: grid;
+grid-template-columns: 2fr 1fr;
+grid-template-rows: 150px 1fr 1fr;
+}
+
+.god div{
+grid-column: 1;
+}
+
+.god p{
+margin: 10px;
+margin-right: 20px;
+grid-row: 2;
+}
+.god image{
+margin: 10px;
+grid-row: 1 / span 2;
+}
+
+.mainImg{
+width: 100%;
+height: 500px;
+background-size:cover;
+background-repeat: no-repeat;
+}
+
+.homebutton{
+height: 74px;
+width: 74px;
+border-radius: 50%;
+}
+.form-inline {
+flex-flow: nowrap;
+}
+
+.type .mainImg{
+margin: 0;
+}
+
+.bottom_card{
+position: relative !important;
+}
+
+main h4 {
+background-color: rgba(208,241,191, 0.8);
+margin: 0 10px;
+}
+
+main h1 {
+margin: 0 10px;
+}
+
+main h3 {
+margin: 10px 10px;
+}
+
+.nav-link{
+margin-right: 600px;
+}
+
+.user{
+margin-left: 20px;
+}
+
+.card-header{
+text-align: right;
+}
+
+.card-header{
+text-align: right;
+}

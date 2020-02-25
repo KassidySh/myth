@@ -6,6 +6,7 @@ class Region(models.Model):
     genre =  models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     intro = models.TextField()
+    image = models.TextField(blank=True)
     
     def __str__(self):
         return self.genre
@@ -26,7 +27,7 @@ class Being(models.Model):
     image = models.TextField()
     origin=models.TextField()
     associated_city = models.TextField(blank=True)
-    
+    favorite_god = models.ManyToManyField(User, related_name='favorite_god', blank=True)
     
     def __str__(self):
         return self.title
@@ -59,6 +60,7 @@ class Story(models.Model):
     god= models.ForeignKey(Being, on_delete=models.CASCADE, related_name='person', default=1)
     title=models.CharField(max_length=500)
     content=models.TextField()
+    favorite_story = models.ManyToManyField(User, related_name='favorite_story', blank=True)
     
     def __str__(self):
         return self.title
@@ -70,9 +72,9 @@ class Comment(models.Model):
 
 
 class FaveGod(models.Model):
-    user=models.ForeignKey(Author, on_delete=models.CASCADE, related_name='person', blank=True)
+    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name='person', blank=True)
     god= models.ForeignKey(Being, on_delete=models.CASCADE, related_name='being', blank=True)
     
 class FaveStory(models.Model):
-    user=models.ForeignKey(Author, on_delete=models.CASCADE, related_name='loggedon', blank=True)
+    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name='loggedon', blank=True)
     story= models.ForeignKey(Story, on_delete=models.CASCADE, related_name='story', blank=True)

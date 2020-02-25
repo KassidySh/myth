@@ -1,49 +1,94 @@
 {% extends 'myth/base.html' %} {% block content %}
-<h1>{{ god.genre }}</h1>
-<h2>{{ god.myth_type }}</h2>
-<h3>{{ god.title }}</h3>
+<main class='god'>
+<div>
+<h1>{{ god.title }}</h1>
+<h5>{{ god.myth_type }}</h5>
+<h5>{{ god.genre }}</h5>
+</div>
 <p>{{ god.origin }}</p>
+
 <img src="{{ god.image }}">
-
-
+<div id="fave-section">
+<a href="#">
+<i class="far fa-heart fa-lg"></i>
+</a>
+</div>
+</main>
 <!-- loop for relationships for first god key -->
 {% for relation in god.god1.all%}
-<h3>{{relation.god1}} - {{relation.detail}} of <a href="{% url 'single_being' pk=relation.god2.id %}">{{relation.god2}}</a></h3>
+<h3>{{relation.god1}} - {{relation.detail}} of <a class="text-info" href="{% url 'single_being' pk=relation.god2.id %}">{{relation.god2}}</a></h3>
 {% endfor %}
 
 <!-- if forign key is 2nd god -->
 {% for relation2 in god.god2.all%}
-<h3>{{relation2.god2}} - {{relation2.detail2}} of <a href="{% url 'single_being' pk=relation2.god1.id %}">{{relation2.god1}}</a> </h3>
+<h3>{{relation2.god2}} - {{relation2.detail2}} of <a class="text-info" href="{% url 'single_being' pk=relation2.god1.id %}">{{relation2.god1}}</a> </h3>
 {% endfor %}
 <!-- for loop for what they're the god of -->
 {% for list in god.god.all%}
 <h5>{{list.item}}</h5>
 {% endfor %}
 
-<a href="{% url 'new_story' pk=god.id %}">ADD A STORY</a>
+<a  href="{% url 'new_story' pk=god.id %}"><h2>ADD A STORY</h2></a>
 {% for story in god.person.all%}
-<h2>{{story.title}}</h2>
-<p>{{story.content}}</p>
-<a href="{% url 'new_comment' pk=story.id god_pk=god.id %}">Comment</a>
+<div class="card" style="width: 80%;">
+<div class="card-body">
+
+
+<div class="card-header">
+<div id="fave-story">
+{% if User.username in favourite_story %}
+<a href="{% url 'favorite_story' pk=story.id god_pk=god.id%}">
+<i class="fas fa-heart fa-lg"></i>
+</a>
+{% else %}
+<a href="{% url 'favorite_story' pk=story.id god_pk=god.id%}">
+<i class="far fa-heart fa-lg"></i>
+
+</a>
+{% endif %}
+</div>
+
+
+
+{% if user.id is story.author.id %}
+
+<a class="text-danger" class='delete' href="{% url 'delete_story' pk=story.id god_pk=god.id %}">
+<i class="fa fa-trash-o" aria-hidden="true"></i>
+</a>
+<a href="{% url 'edit_story' pk=story.id %}"><i class="fas fa-edit"></i></a>
+</div>
+{% endif %}
+
+<h2 class="card-title">{{story.title}}</h2>
+<p class="card-text">{{story.content}}</p>
+<a class="card-link" href="{% url 'new_comment' pk=story.id god_pk=god.id %}">Comment</a>
 
 <!-- {% block comment %}{% endblock %} -->
 
 {% for comment in story.related_story.all%}
-<h3>{{ comment.comment }}</h3>
-<h5>{{ comment.author }}</h5>
-<!-- If the comment was written by the author -->
+<div class="card">
 {% if user.id is comment.author.id %}
-<a class='delete' href="{% url 'delete_comment' pk=comment.id god_pk=god.id %}"><i class="fas fa-trash-alt"></i></a>
+<div class="card-header">
+<a class="text-danger" class='delete' href="{% url 'delete_comment' pk=comment.id god_pk=god.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 <a href="{% url 'edit_comment' pk=comment.id god_pk=god.id %}"><i class="fas fa-edit"></i></a>
+</div>
 {% endif %}
 
+<div class="card-body">
+<blockquote class="blockquote mb-0">
+<h3>{{ comment.comment }}</h3>
+<h5 class="blockquote-footer">{{ comment.author }}</h5>
+</blockquote>
+<!-- If the comment was written by the author -->
+
+</div>
+</div>
 {% endfor %}
 <!-- If the story was made by the user -->
-{% if user.id is story.author.id %}
 
-<a class='delete' href="{% url 'delete_story' pk=story.id god_pk=god.id %}"><i class="fas fa-trash-alt">delete</i></a>
-<a href="{% url 'edit_story' pk=story.id %}"><i class="fas fa-edit"></i></a>
-{% endif %}
+  </div>
+</div>
 {% endfor %}
+
 <!-- I need to have the stories loop through -->
 {% endblock %}
