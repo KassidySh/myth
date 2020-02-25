@@ -1,18 +1,18 @@
 {% extends 'myth/base.html' %} {% block content %}
 <main class='god'>
-<div>
-<h1>{{ god.title }}</h1>
-<h5>{{ god.myth_type }}</h5>
-<h5>{{ god.genre }}</h5>
-</div>
-<p>{{ god.origin }}</p>
+  <div>
+    <h1>{{ god.title }}</h1>
+    <h5>{{ god.myth_type }}</h5>
+    <h5>{{ god.genre }}</h5>
+  </div>
+  <p>{{ god.origin }}</p>
 
-<img src="{{ god.image }}">
-<div id="fave-section">
+  <img src="{{ god.image }}">
+<!-- <div id="fave-section">
 <a href="#">
 <i class="far fa-heart fa-lg"></i>
 </a>
-</div>
+</div> -->
 </main>
 <!-- loop for relationships for first god key -->
 {% for relation in god.god1.all%}

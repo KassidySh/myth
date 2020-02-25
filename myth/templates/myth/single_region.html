@@ -1,27 +1,27 @@
 {% extends 'myth/base.html' %} {% block content %}
 <main  class="mainImg"  style="background-image:url({{ region.image }})">
-<h1>{{ region.genre }}</h1>
-<h2>{{ region.location }}</h2>
-<h4>{{ region.intro }}</h4>
+  <h1>{{ region.genre }}</h1>
+  <h2>{{ region.location }}</h2>
+  <h4>{{ region.intro }}</h4>
 
 </main>
 
 {% for type in region.types.all %}
-<a class="text-dark" href="{% url 'single_type'  pk=type.id %}">
-<div class="card mb-3" style="max-width: 90%;">
-<div class="row no-gutters">
-    <div class="col-md-4">
-<img class="card-img" src=" {{ type.img }}">
-</div>
-<div class="col-md-8">
- <div class="card-body">
-<h3 class="card-title">{{ type.title }}</h3>
-</div>
-</div>
+  <a class="text-dark" href="{% url 'single_type'  pk=type.id %}">
+    <div class="card mb-3" style="max-width: 90%;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img class="card-img" src=" {{ type.img }}">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">{{ type.title }}</h3>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
-</div>
-  </div>
-</a>
+  </a>
 {% endfor %}
 
 

@@ -1,53 +1,32 @@
 # MYTHS OF THE WORLD
 
-This is an application to view different gods from different religions and search them. You can add different stories for the gods, and comment on the story.
+## Description
+This is an application to view different gods from different religions and search them. You can add different stories for the gods, and comment on a story.
 
-REGION:
-- Genre
-- Location
-- intro
-Type:
-Genre
-- Title
-- Image
-- info
-Being:
-- Genre
-- Myth_type
-- Title
-- Image
-- Origin
-- Associated_city
-Relation:
-- God1
-- God2
-- Description1
-- Description2
-God_of:
-- God
-- Item
+## Picture of running app goes here
 
-User:
-- User - user foreign key
-- Image
-Story:
-- God - being foreign key
-- Author - user foreign key
-- Title
-- Text
-Comment:
-- Story - Story foreign key
-- Author - foreign key
-- text
+## User Stories
+- View lists of diffrent mythologies
+- View subcatagories in the mythologies
+- Click on a single God
+- Add a story to any God
+- Comment on any Story
+- Click on any God related to another and be sent to a new gods page
+- Login and out
+- View stories written
 
+## Technology Used
+- Django
+- Python
+- Bootstrap
+- Font-awesome
+- Google Fonts
 
+## Installation Instructions
+- Fork this repo
+- Clone the repo down to your machine
+- Run python manage.py
 
-
-## BRONZE:
-- See various gods
-- Add/update/delete stories for gods
-- Search with Haystack django
-## SILVER:
-- Add/update/delete comments for stories
-## GOLD:
-- Basic chatroom where people can share ideas
+## Important sites
+- github
+- deployed
